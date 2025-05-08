@@ -13,19 +13,18 @@ public class InteractionBehavior : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         InteractionImage.enabled = true;
-        if(other.GetComponent<PlayerInteraction>()) {
-            other.GetComponent<PlayerInteraction>().CanInteract = true;
-        
+        if (other.TryGetComponent(out PlayerInteraction playerInteract))
+        {
+            playerInteract.CanInteract = true;
         }
     }
 
     public virtual void OnTriggerExit2D(Collider2D other)
     {
         InteractionImage.enabled=false;
-        if (other.GetComponent<PlayerInteraction>())
+        if (other.TryGetComponent(out PlayerInteraction playerInteract))
         {
-            other.GetComponent<PlayerInteraction>().CanInteract = false;
-
+           playerInteract.CanInteract = false;
         }
 
     }
