@@ -1,54 +1,52 @@
-﻿using System.Collections;
+﻿using Cainos.PixelArtTopDown_Basic;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public bool CanInteract;
 
-    [Header("Interaction Settings")]
-    [SerializeField] private LayerMask _interactLayerMask;  
-    [SerializeField] private float interactRange = 2f;
-    [SerializeField] private Transform carryPivot;  // Pivote donde se posiciona el objeto.
+    private GameObject reference; //Reference to the GameObject that the Player CanInteract with
+    [SerializeField] private TopDownCharacterController characterController;
 
-    [Header("Raycast")]
-    [SerializeField] private Transform pivotRaycast;  // Punto de raycast.
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)&&CanInteract)
+        if (Input.GetKeyDown(KeyCode.E)&&CanInteract && reference != null)
         {
-            TryInteract();
+            TryInteract(reference);
         }
     }
 
 
-    public void TryInteract()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Ray ray = new Ray(pivotRaycast.position, pivotRaycast.forward);
+        if (collision.transform.TryGetComponent(out InteractionBehavior InteractBuddy))
+            reference = collision.gameObject;
+    }
 
-        if (Physics.Raycast(ray, out RaycastHit hit, interactRange, _interactLayerMask))
-        {
-            if (hit.transform.TryGetComponent(out InteractionBehavior InteractBuddy) != false)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.TryGetComponent(out InteractionBehavior InteractBuddy))
+            reference = null;
+    }
+
+    public void TryInteract(GameObject hit)
+    {      
+            if (hit.transform.TryGetComponent(out InteractionBehavior InteractBuddy))
             {
                 if (InteractBuddy != null)
                 {
                     InteractBuddy.Interact(this);
                 }
-            }
-        }
+            }        
     }
 
-    private void OnDrawGizmos()
-    {
-        Ray ray = new Ray(pivotRaycast.position, pivotRaycast.forward);
+    public TopDownCharacterController GetPlayerControler() { return characterController; }
 
-        Gizmos.color = Physics.Raycast(ray, out _, interactRange, _interactLayerMask)
-            ? Color.red
-            : Color.green;
-
-        Gizmos.DrawRay(ray.origin, ray.direction * interactRange);
-    }
 
 
 
