@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 5548040648952495591}
   - component: {fileID: 2412897370838322238}
   - component: {fileID: 6107129747176669151}
-  - component: {fileID: 3079011994782387021}
   m_Layer: 20
   m_Name: NewPlayerHead
   m_TagString: Player
@@ -562,35 +561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   scoreCoins: 0
---- !u!114 &3079011994782387021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7886770479543022317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9fe1ea5a371a74ba4662d706514d6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5548040648952495591}
-  HeadBools:
-  - HeadDefault
-  - HeadSuper
-  - HeadFray
-  - HeadStrong
-  BodyBools:
-  - BodyDefault
-  - BodySuper
-  - BodyFray
-  - BodyStrong
-  EyeBools:
-  - BlueEyes
-  - RedEyes
-  - GreenEyes
-  - BlackEyes
-  - CreepyEyes
 --- !u!1 &7900173439108302916
 GameObject:
   m_ObjectHideFlags: 0

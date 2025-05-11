@@ -11,7 +11,7 @@ public class ChestShopper : InteractionBehavior
     {
         //OpenShopMenu LOL
         //StopPlayerMovement
-        player.GetPlayerControler().GetSpeed(0);
+        player.GetPlayerControler().ChangeSpeed(0);
         _shopCanvas.enabled = true;
 
     }

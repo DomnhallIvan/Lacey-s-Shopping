@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public UI_Player UIreference;
     public PlayerController playerRef;
+    public ShopBttns UIManagerRef;
 
     private void Awake()
     {
@@ -24,5 +25,17 @@ public class GameManager : MonoBehaviour
     {
         playerRef.scoreCoins += coinValue;
         UIreference.SetScore(playerRef.scoreCoins);
-    } 
+        UIManagerRef.CheckPurchaseable();
+    }
+    
+    public float GetPlayerCoins()
+    {
+        return playerRef.scoreCoins;
+    }
+
+    public void SpendCoins(int coinValue)
+    {
+        playerRef.scoreCoins -= coinValue;
+        UIreference.SetScore(playerRef.scoreCoins);
+    }
 }

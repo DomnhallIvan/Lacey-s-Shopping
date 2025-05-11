@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Reference for ChestShopper
-    public float GetSpeed(float newSpeed)
+    public float ChangeSpeed(float newSpeed)
     {
         speed= newSpeed;
         return speed;
