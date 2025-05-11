@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private float speed;
-
+    public int scoreCoins;
     private Animator animator;
    
 
