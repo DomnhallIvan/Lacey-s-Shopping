@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ShopBttns : MonoBehaviour
 {
-    [SerializeField] private TopDownCharacterController _characterRef;
+    [SerializeField] private PlayerController _characterRef;
 
-
-    public void SetPlayerSpeed()
+    //SetNewPlayerSpeed 3 Recommended
+    public void SetPlayerSpeed(float newSpeed)
     {
-        _characterRef.speed = 3;
+        _characterRef.GetSpeed(newSpeed);
     }
 }

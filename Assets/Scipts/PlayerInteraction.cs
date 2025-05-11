@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool CanInteract;
 
     private GameObject reference; //Reference to the GameObject that the Player CanInteract with
-    [SerializeField] private TopDownCharacterController characterController;
+    [SerializeField] private PlayerController characterController;
 
 
     private void Update()
@@ -45,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour
             }        
     }
 
-    public TopDownCharacterController GetPlayerControler() { return characterController; }
+    public PlayerController GetPlayerControler() { return characterController; }
 
 
 

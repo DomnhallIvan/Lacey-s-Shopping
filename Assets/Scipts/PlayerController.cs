@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    [SerializeField]private float speed;
 
     private Animator animator;
    
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
        animator = GetComponent<Animator>();
     }
 
-
+    //ChangesAnim depending of the Vector2dir for Direction and to set it if it's moving.
     private void Update()
     {
         Vector2 dir = Vector2.zero;
@@ -44,5 +45,12 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isMoving", dir.magnitude > 0);
 
         GetComponent<Rigidbody2D>().velocity = speed * dir;
+    }
+
+    //Reference for ChestShopper
+    public float GetSpeed(float newSpeed)
+    {
+        speed= newSpeed;
+        return speed;
     }
 }

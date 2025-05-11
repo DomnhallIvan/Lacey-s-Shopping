@@ -6,14 +6,14 @@ public class ChestShopper : InteractionBehavior
 {
     [SerializeField] private Canvas _shopCanvas;
 
-    //WhenPlayerCloses the ShopMenu it should restart PlayerController speed.
+    //WhenPlayerCloses the ShopMenu it should restart PlayerController speed from the Buttons.
     public override void Interact(PlayerInteraction player)
     {
         //OpenShopMenu LOL
-        Debug.Log("OpenShopMenu LOL");
-        player.GetPlayerControler().speed = 0;
-        _shopCanvas.enabled = true;
         //StopPlayerMovement
+        player.GetPlayerControler().GetSpeed(0);
+        _shopCanvas.enabled = true;
+
     }
 
     
