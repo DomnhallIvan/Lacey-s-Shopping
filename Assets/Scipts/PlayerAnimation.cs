@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] private Animator animator;
     [SerializeField] private string[] HeadBools;
     [SerializeField] private string[] BodyBools;
     [SerializeField] private string[] EyeBools;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         SetBooleanHead("HeadDefault");
         SetBooleanBody("BodyDefault");
         SetBooleanEyes("BlueEyes");
